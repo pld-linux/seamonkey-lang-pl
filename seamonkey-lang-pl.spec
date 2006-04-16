@@ -38,6 +38,7 @@ install bin/chrome/{PL,pl-PL,pl-unix}.jar $RPM_BUILD_ROOT%{_chromedir}
 install lang-pl-installed-chrome.txt $RPM_BUILD_ROOT%{_chromedir}
 cp -r bin/{searchplugins,defaults,components/myspell} $RPM_BUILD_ROOT%{_datadir}/seamonkey
 rm $RPM_BUILD_ROOT%{_datadir}/seamonkey/searchplugins/google.*
+rename PL pl-PL $RPM_BUILD_ROOT%{_datadir}/seamonkey/myspell/PL.{aff,dic}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
