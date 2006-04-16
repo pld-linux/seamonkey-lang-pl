@@ -10,6 +10,7 @@ Source0:	http://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/%{version}/co
 Source1:	gen-installed-chrome.sh
 URL:		http://www.mozilla.org/projects/seamonkey/
 BuildRequires:	unzip
+BuildRequires:	util-linux
 Requires(post,postun):	seamonkey >= %{version}
 Requires(post,postun):	textutils
 Requires:	seamonkey >= %{version}
