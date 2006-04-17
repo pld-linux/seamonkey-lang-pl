@@ -28,8 +28,7 @@ Polish resources for SeaMonkey.
 Polskie pliki jêzykowe dla SeaMonkeya.
 
 %prep
-%setup -q -c -T
-unzip %{SOURCE0}
+%setup -q -c
 unzip -o %{SOURCE1}
 install %{SOURCE2} .
 ./gen-installed-chrome.sh locale bin/chrome/{PL,pl-PL,pl-unix}.jar \
