@@ -19,6 +19,7 @@ BuildRequires:	util-linux
 Requires(post,postun):	seamonkey >= %{version}
 Requires(post,postun):	textutils
 Requires:	seamonkey >= %{version}
+Obsoletes:	mozilla-lang-pl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
