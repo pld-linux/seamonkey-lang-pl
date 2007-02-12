@@ -2,7 +2,7 @@
 %define	_reg	PL
 %define _lare	%{_lang}-%{_reg}
 Summary:	Polish resources for SeaMonkey
-Summary(pl):	Polskie pliki jêzykowe dla SeaMonkeya
+Summary(pl.UTF-8):   Polskie pliki jÄ™zykowe dla SeaMonkeya
 Name:		seamonkey-lang-%{_lang}
 Version:	1.1
 Release:	1
@@ -28,8 +28,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Polish resources for SeaMonkey.
 
-%description -l pl
-Polskie pliki jêzykowe dla SeaMonkeya.
+%description -l pl.UTF-8
+Polskie pliki jÄ™zykowe dla SeaMonkeya.
 
 %prep
 %setup -q -c
