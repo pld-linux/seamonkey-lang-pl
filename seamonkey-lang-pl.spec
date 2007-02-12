@@ -2,7 +2,7 @@
 %define	_reg	PL
 %define _lare	%{_lang}-%{_reg}
 Summary:	Polish resources for SeaMonkey
-Summary(pl.UTF-8):   Polskie pliki językowe dla SeaMonkeya
+Summary(pl.UTF-8):	Polskie pliki językowe dla SeaMonkeya
 Name:		seamonkey-lang-%{_lang}
 Version:	1.1
 Release:	1
