@@ -1,19 +1,25 @@
+%define	_lang	pl
+%define	_reg	PL
+%define _lare	%{_lang}-%{_reg}
 Summary:	Polish resources for SeaMonkey
 Summary(pl):	Polskie pliki jêzykowe dla SeaMonkeya
-Name:		seamonkey-lang-pl
-Version:	1.0
+Name:		seamonkey-lang-%{_lang}
+Version:	1.1.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/%{version}/contrib-localized/seamonkey-%{version}.pl-PL.langpack.xpi
-# Source0-md5:	dc5c5a73e7b591ac4839f9e39dfd5308
-Source1:	gen-installed-chrome.sh
+Source0:	http://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/%{version}/contrib-localized/seamonkey-%{version}.%{_lare}.langpack.xpi
+# Source0-md5:	fd9ab8592ec6d4bdbbbd63e5352567d1
+Source1:	http://www.mozilla-enigmail.org/downloads/lang/0.9x/enigmail-%{_lare}-0.9x.xpi
+# Source1-md5:	5061fb4a0b321644a1716aea831cf281
+Source2:	gen-installed-chrome.sh
 URL:		http://www.mozilla.org/projects/seamonkey/
 BuildRequires:	unzip
 BuildRequires:	util-linux
 Requires(post,postun):	seamonkey >= %{version}
 Requires(post,postun):	textutils
 Requires:	seamonkey >= %{version}
+Obsoletes:	mozilla-lang-pl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,20 +32,23 @@ Polish resources for SeaMonkey.
 Polskie pliki jêzykowe dla SeaMonkeya.
 
 %prep
-%setup -q -c -T
-unzip %{SOURCE0}
-install %{SOURCE1} .
-./gen-installed-chrome.sh locale bin/chrome/{PL,pl-PL,pl-unix}.jar > lang-pl-installed-chrome.txt
+%setup -q -c
+%{__unzip} -o -qq %{SOURCE1}
+install %{SOURCE2} .
+./gen-installed-chrome.sh locale bin/chrome/{%{_reg},%{_lare},%{_lang}-unix}.jar \
+	> lang-%{_lang}-installed-chrome.txt
+./gen-installed-chrome.sh locale chrome/enigmail-%{_lare}.jar \
+	>> lang-%{_lang}-installed-chrome.txt
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_chromedir}
 
-install bin/chrome/{PL,pl-PL,pl-unix}.jar $RPM_BUILD_ROOT%{_chromedir}
-install lang-pl-installed-chrome.txt $RPM_BUILD_ROOT%{_chromedir}
-cp -r bin/{searchplugins,defaults,components/myspell} $RPM_BUILD_ROOT%{_datadir}/seamonkey
+install bin/chrome/{%{_reg},%{_lare},%{_lang}-unix}.jar $RPM_BUILD_ROOT%{_chromedir}
+install chrome/enigmail-%{_lare}.jar $RPM_BUILD_ROOT%{_chromedir}
+install lang-%{_lang}-installed-chrome.txt $RPM_BUILD_ROOT%{_chromedir}
+cp -r bin/{searchplugins,defaults,dictionaries} $RPM_BUILD_ROOT%{_datadir}/seamonkey
 rm $RPM_BUILD_ROOT%{_datadir}/seamonkey/searchplugins/google.*
-rename PL pl-PL $RPM_BUILD_ROOT%{_datadir}/seamonkey/myspell/PL.{aff,dic}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,11 +61,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_chromedir}/pl-PL.jar
-%{_chromedir}/pl-unix.jar
-%{_chromedir}/PL.jar
-%{_chromedir}/lang-pl-installed-chrome.txt
+%{_chromedir}/%{_reg}.jar
+%{_chromedir}/%{_lare}.jar
+%{_chromedir}/%{_lang}-unix.jar
+%{_chromedir}/enigmail-%{_lare}.jar
+%{_chromedir}/lang-%{_lang}-installed-chrome.txt
 %{_datadir}/seamonkey/searchplugins/*
-%{_datadir}/seamonkey/defaults/messenger/PL
-%{_datadir}/seamonkey/defaults/profile/PL
-%{_datadir}/seamonkey/myspell/*
+%{_datadir}/seamonkey/defaults/messenger/%{_reg}
+%{_datadir}/seamonkey/defaults/profile/%{_reg}
+%{_datadir}/seamonkey/dictionaries/*
