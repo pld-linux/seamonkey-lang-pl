@@ -4,12 +4,12 @@
 Summary:	Polish resources for SeaMonkey
 Summary(pl.UTF-8):	Polskie pliki językowe dla SeaMonkeya
 Name:		seamonkey-lang-%{_lang}
-Version:	1.1.8
+Version:	1.1.9
 Release:	1
 License:	MPL 1.1 or GPL v2+ or LGPL v2.1+
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/seamonkey/releases/%{version}/contrib-localized/seamonkey-%{version}.%{_lare}.langpack.xpi
-# Source0-md5:	4593b995556475fa48c5cb46c20fd5f4
+# Source0-md5:	8a54c325dc49b22dc0411b95a654f76b
 Source1:	http://www.mozilla-enigmail.org/download/release/0.95/enigmail-%{_lare}-0.95.xpi
 # Source1-md5:	3ac349c7b6a1ebbd80f11c8911f5102d
 Source2:	gen-installed-chrome.sh
